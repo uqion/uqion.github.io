@@ -41,19 +41,10 @@
     if($result1->num_rows > 0){
         //output data of each row
         while($row = $result1->fetch_assoc()){
-            //$query1 = mssql_query("SELECT COUNT(*) AS total FROM display WHERE $row["first_name"] = 1";
-            //$row1 = mssql_fetch_assoc($query); // fetch it first
 
-            //if($row['total'] > 1) {
-            // do what you have to do
-                //}
-            // echo"<br><a href='YourProcessPage.php?path=" . $row['first_name'] . "'>" . $row['first_name'] . "</a><br>";
             echo"<br>".$row["last_name"].", ".$row["first_name"]."|   ".$row["Position"]."  |  ".$row["name"]."  |  ".$row["email"]."<br>";
             echo "<td><a href='delete.php?id=".$row['pid']."'>Delete</a></td> &nbsp;&nbsp;   <td><a href='edit.php?id=".$row['wid']."'>Edit</a></td>";
-        //    echo "<div><a href='addContact.php?id=$row[name]\">Delete</a>"; echo"   </a>&nbsp;<a href='addContact.php'>           Edit</a>";"
-
-                //<br>
-        //    </div>";
+        
         }
     }else{
         echo "0 results";
