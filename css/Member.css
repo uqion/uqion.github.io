@@ -1,0 +1,18 @@
+body {
+    padding: 8px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    text-align: left;
+}
+
+
+h2 {
+    color: #173e43;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+
+h3 {
+    color: #173e43;
+    font-size: 20px;
+    text-transform: uppercase;
+}

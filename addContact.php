@@ -49,15 +49,32 @@
                     <input class="input" type="email" id="email" name="email" placeholder="e.g. juliachu312@gmail.com"><br>
 
 
-                        <div class="selection">
-                                          <span>Company: </span>
-                                          <select name = "companyOption">
-                                              <option value="Google LLC">Google</option>
-                                              <option value="McDonald's">McDonald's</option>
-                                              <option value="BBC">BBC</option>
-                                          </select>
-                                      </div>
-                                                              <div><a href="addCompany.php">Company not listed? Click here to add to directory</a></div>
+
+    <?php
+
+    $conn = new mysqli('localhost', 'root', 'root', 'tiran_directory') or die ('Cannot connect to db');
+
+        $result = $conn->query("SELECT name FROM company");
+
+        echo "<html>";
+        echo "<body>";
+        echo "<span>Company: </span>";
+        echo "<select name = 'companyOption'>";
+        while ($row = $result->fetch_assoc()) {
+
+                  unset($name);
+                      $name = $row['name'];
+                      echo "<option>" . $row{'name'} . "</option>";
+                      echo '<option value="'.$name.'"</option>';
+
+    }
+
+
+        echo "</select>";
+
+    ?>
+    <div><a href="addCompany.php">Company not listed? Click here to add to directory</a></div>
+
 
                                       <label for="position">Position (required)</label><br>
                                       <input class="input" type="text" id="position" name="position" placeholder="e.g. Product Manager"><br>

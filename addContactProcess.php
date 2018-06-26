@@ -45,23 +45,20 @@
             $position=$_POST['position'];
             $name = $_POST['companyOption'];
 
+            if (!empty($_POST['first_name']) && !empty($_POST['last_name']) && !empty($_POST['email']) && !empty($_POST['position'])){
+
 
             mysqli_query($conn,"INSERT INTO contact (first_name, last_name, email)
             VALUES ('$first_name','$last_name','$email')");
             $pid = mysqli_insert_id($conn);
-
             $result = mysqli_query($conn,"SELECT cid FROM company WHERE name = '$name'");
-$row = mysqli_fetch_row($result);
-
-
+            $row = mysqli_fetch_row($result);
             $cid= $row[0];
-
-            mysqli_query($conn,"INSERT INTO works_at (pid,cid,position)
-            VALUES ('$pid', '$cid','$position')");
+            mysqli_query($conn,"INSERT INTO works_at (pid,cid,position)VALUES ('$pid', '$cid','$position')");
 
             if(mysqli_affected_rows($conn) > 0){
                 echo "<br><br><div>Contact added. <a href='addContact.php'>Add another contact</a>
-                    <br><br>>
+                    <br><br>
                 </div>";
 
             }else{
@@ -69,11 +66,17 @@ $row = mysqli_fetch_row($result);
                     <br><br><br><br>
                 </div>";
             }
+        }else{
+                    Print '<script>alert("One or more of required fields empty!");</script>';
+                    echo "<br><br><div><a href='addContact.php'>Try again.</a>
+                        <br><br>
+                    </div>";
+        }
         ?>
         </main>
         <footer>
-           <p>Party Animal Shelter &copy; | </p>
-            <a href="references.html">References</a>
+           <p>My ContactBook &copy; | </p>
+
         </footer>
     </body>
 </html>

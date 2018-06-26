@@ -34,7 +34,7 @@ $conn->close();
         <main>
 
                 <form action="searchprocess1.php" method= "post">
-                    <br><br>
+                    <br>
                     <label for="name">Search by company...</label><br>
                     <input class="input" type="text" id="name" name="name" placeholder="e.g. Clear View Systems"><br>
                     <button type="submit">Search</button>
@@ -42,10 +42,10 @@ $conn->close();
 
 
                 <form action="searchprocess2.php"  method= "post">
-                        <br><br>
+                        <br>
                     <label for="last_name">Search by surname...</label><br>
                     <input class="input" type="text" id="last_name" name="last_name" placeholder="e.g. Chu"><br>
-                    <button type="submit">Search</button>
+                    <button type="submit">Search</button><br>
                                     </form>
                                 </div>
                             </main>

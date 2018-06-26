@@ -1,24 +1,4 @@
-<?php
-    /*Set up*/
-    $servername = "localhost";
-    $username = "root";
-    $password = "root";
-    $dbname = "tiran_directory";
-    // Create connections
-    $conn = new mysqli($servername, $username, $password, $dbname);
 
-    // Check connection
-    if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-    }
-    //clear procedure
-    function clearConnection($mysql){
-        while($mysql->more_results()){
-        $mysql->next_result();
-        $mysql->use_result();
-        }
-    }
-?>
 <!DOCTYPE html>
 <html>
     <head>
@@ -38,10 +18,10 @@
         <main>
 
                 <form  action="addCompanyprocess.php" method= "post">
-                    <label for="name">Company name (required)</label><br>
+                    <label for="name">Company name</label><br>
                     <input class="input" type="text" id="name" name="name" placeholder="e.g. Clear View Systems Ltd."><br>
 
-                    <label for="inc_date">Incorporation date (required)</label><br>
+                    <label for="inc_date">Incorporation date </label><br>
                     <input class="input" type="text" id="inc_date" name="inc_date" placeholder="(yyyy/mm/dd)"><br>
 
 

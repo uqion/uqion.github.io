@@ -1,4 +1,5 @@
 <?php
+
     /*Set up*/
     $servername = "localhost";
     $username = "root";
@@ -18,6 +19,7 @@
         $mysql->use_result();
         }
     }
+    $id = $_GET['id'];
 ?>
 <!DOCTYPE html>
 <html>
@@ -36,35 +38,39 @@
             </ul>
         </nav>
         <main>
-        <?php
+<br><br>
+<form action="addPositionProcess.php" method="post">
+<input type="hidden" name="ID" value="<?=$id;?>">
 
-            $name=$_POST['name'];
-            $inc_date=$_POST['inc_date'];
-    if (!empty($_POST['name']) && !empty($_POST['inc_date'])){
-            mysqli_query($conn,"INSERT INTO company (name, inc_date)
-            VALUES ('$name','$inc_date')");
+<?php
 
-            if(mysqli_affected_rows($conn) > 0){
-                echo "<br><br><div>Company added. <a href='addCompany.php'>Add another company</a>
-                    <br><br>
-                </div>";
+$conn = new mysqli('localhost', 'root', 'root', 'tiran_directory') or die ('Cannot connect to db');
 
-            }else{
-                echo "<br><br><div>This company is already in the directory.
-                    <br><br>
-                </div>";
-            }
-        }else{
-                    Print '<script>alert("One or more of required fields empty!");</script>';
-                    echo "<br><br><div><a href='addCompany.php'>Try again</a>
-                        <br><br>
-                    </div>";
-        }
-        ?>
-        </main>
-        <footer>
+    $result = $conn->query("SELECT name FROM company");
+
+    echo "<html>";
+    echo "<body>";
+    echo "<span>Company: </span>";
+    echo "<select name = 'companyOption'>";
+    while ($row = $result->fetch_assoc()) {
+
+              unset($name);
+                  $name = $row['name'];
+                  echo "<option>" . $row{'name'} . "</option>";
+
+}
+
+
+    echo "</select>";
+
+?><br>
+Position: <input type="text" name="position"><td>
+<input type="Submit"><br><br>
+</form>
+</main>
+       <footer>
            <p>My ContactBook &copy; | </p>
 
-        </footer>
-    </body>
+       </footer>
+   </body>
 </html>
